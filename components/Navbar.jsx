@@ -136,7 +136,7 @@ export default function Navbar() {
           border-color: var(--color-border);
           box-shadow: 0 8px 40px rgba(0,0,0,0.4);
         }
-        .navbar__inner { height: 100%; gap: 24px; }
+        .navbar__inner { height: 100%; gap: 18px; }
         .navbar__logo {
           display: flex; align-items: center; gap: 10px;
           text-decoration: none;
@@ -146,7 +146,7 @@ export default function Navbar() {
           letter-spacing: -0.02em;
           color: var(--color-white);
         }
-        .navbar__logo-image { display: block; width: 150px; height: 52px; object-fit: contain; object-position: left center; }
+        .navbar__logo-image { display: block; width: 112px; height: 40px; object-fit: contain; object-position: left center; }
         .navbar__links {
           display: flex; align-items: center; gap: 4px;
           list-style: none;
@@ -154,10 +154,10 @@ export default function Navbar() {
           justify-content: center;
         }
         .navbar__link {
-          padding: 8px 14px;
+          padding: 7px 11px;
           border-radius: var(--radius-full);
           color: var(--color-muted);
-          font-size: 0.88rem;
+          font-size: 0.78rem;
           font-weight: 500;
           font-family: var(--font-accent);
           text-decoration: none;
