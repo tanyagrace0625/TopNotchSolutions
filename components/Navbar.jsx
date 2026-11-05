@@ -1,14 +1,15 @@
 'use client';
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
+import Image from 'next/image';
 
 const NAV_LINKS = [
   { label: 'About',    href: '#about' },
   { label: 'Services', href: '#services' },
-  { label: 'How It Works', href: '#how-it-works' },
   { label: 'Why Us',   href: '#why-us' },
   { label: 'Testimonials', href: '#testimonials' },
-  { label: 'Contact',  href: '#contact' },
+    { label: 'Team',     href: '#team' },
+
+  { label: 'Portfolio', href: '/works' },
 ];
 
 export default function Navbar() {
@@ -46,21 +47,14 @@ export default function Navbar() {
         <div className="navbar__inner container flex-between">
           {/* Logo */}
           <a href="#hero" className="navbar__logo" onClick={e => { e.preventDefault(); scrollTo('#hero'); }}>
-            <div className="navbar__logo-mark">
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                <polygon points="16,2 30,28 2,28" fill="url(#logoGrad)" />
-                <polygon points="16,8 26,26 6,26" fill="transparent" stroke="rgba(255,255,255,0.3)" strokeWidth="1"/>
-                <defs>
-                  <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#2563EB"/>
-                    <stop offset="100%" stopColor="#06B6D4"/>
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-            <span className="navbar__logo-text">
-              Top<span className="text-gradient">Notch</span>
-            </span>
+            <Image
+              className="navbar__logo-image"
+              src="/logo.png"
+              alt="TopNotch Solutions"
+              width={887}
+              height={387}
+              priority
+            />
           </a>
 
           {/* Desktop Nav */}
@@ -70,7 +64,7 @@ export default function Navbar() {
                 <a
                   href={link.href}
                   className={`navbar__link ${activeSection === link.href.slice(1) ? 'active' : ''}`}
-                  onClick={e => { e.preventDefault(); scrollTo(link.href); }}
+                  onClick={e => { if (link.href.startsWith('#')) { e.preventDefault(); scrollTo(link.href); } }}
                 >
                   {link.label}
                 </a>
@@ -110,7 +104,7 @@ export default function Navbar() {
               href={link.href}
               className="mobile-menu__link"
               style={{ animationDelay: `${i * 0.06}s` }}
-              onClick={e => { e.preventDefault(); scrollTo(link.href); }}
+              onClick={e => { if (link.href.startsWith('#')) { e.preventDefault(); scrollTo(link.href); } }}
             >
               {link.label}
             </a>
@@ -152,8 +146,7 @@ export default function Navbar() {
           letter-spacing: -0.02em;
           color: var(--color-white);
         }
-        .navbar__logo-mark { display: flex; align-items: center; }
-        .navbar__logo-text { white-space: nowrap; }
+        .navbar__logo-image { display: block; width: 150px; height: 52px; object-fit: contain; object-position: left center; }
         .navbar__links {
           display: flex; align-items: center; gap: 4px;
           list-style: none;
